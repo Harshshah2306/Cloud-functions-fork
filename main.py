@@ -88,21 +88,21 @@ def trigger_dag_gcf(request):
             request_json = request.get_json(silent=True)
             if request_json:
                 # Extract parameters from JSON body
-                bucket = request_json.get('bucket', 'us-central1-dev-3a1125a8-bucket')
-                file_path = request_json.get('file', 'data/input/Cleaned-COVID.csv')
+                bucket = request_json.get('bucket', 'YOUR-BUCKET-NAME')
+                file_path = request_json.get('file', 'INPUT-PATH-TO-FILE')
             else:
                 # Use default values
-                bucket = 'us-central1-dev-3a1125a8-bucket'
-                file_path = 'data/input/Cleaned-COVID.csv'
+                bucket = 'YOUR-BUCKET-NAME'
+                file_path = 'INPUT-PATH-TO-FILE'
         else:
             # Handle GET request with query parameters
-            bucket = request.args.get('bucket', 'us-central1-dev-3a1125a8-bucket')
-            file_path = request.args.get('file', 'data/input/Cleaned-COVID.csv')
+            bucket = request.args.get('bucket', 'YOUR-BUCKET-NAME')
+            file_path = request.args.get('file', 'INPUT-PATH-TO-FILE')
 
         # TODO(developer): replace with your values
         # Replace web_server_url with the Airflow web server address
         web_server_url = (
-            "https://8a49176fc95f421b8e8f78e13ef2ef78-dot-us-central1.composer.googleusercontent.com"
+            "YOUR-WEB-SERVER-URL"
         )
         # Replace with the ID of the DAG that you want to run
         dag_id = 'gcs_dataflow_bigquery_official'
